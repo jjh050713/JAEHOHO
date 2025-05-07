@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-
 @RestController
 public class Fx {
 
@@ -22,13 +20,15 @@ public class Fx {
         return ("안녕하세요 " + id + "님");
     }
 
-    @GetMapping("/multiply")
-    public static @ResponseBody double ww(@RequestParam double x, @RequestParam double y) {
-    double result = x*y;
-    return result;
-
-    } 
-
+    @RequestMapping("/checkId")
+    public @ResponseBody String qq(@RequestParam String id){
+        if(id.equals("master12")) return "마스터 권한으로 로그인 되었습니다.";
+        return "로그인이 불가한 아이디입니다.";
     }
 
-//git hub
+    @GetMapping("/multiply")
+    public static @ResponseBody double ww(@RequestParam double x, @RequestParam double y) {
+        double result = x*y;
+        return result;
+    } 
+}
